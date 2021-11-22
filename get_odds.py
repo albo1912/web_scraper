@@ -28,7 +28,7 @@ with webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_o
     time.sleep(5)
     try:
         driver.find_element(By.XPATH, " //*[text()='Browser']").click()
-    excpect NoSuchElementException:
+    except NoSuchElementException:
         pass
     for line in lines:
         z += 1
