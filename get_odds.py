@@ -3,16 +3,22 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.relative_locator import locate_with
 from selenium.common.exceptions import NoSuchElementException
-
+from selenium.webdriver.chrome.options import Options
 import time
 
 
 scroll_max = 0
 # Start the driver
+CHROMEDRIVER_PATH = '/usr/local/bin/chromedriver'
+WINDOW_SIZE = "1920,1080"
+chrome_options = Options()
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--window-size=%s" % WINDOW_SIZE)
+chrome_options.add_argument('--no-sandbox')
 z = 0
 link_list = open('links.txt', 'r')
 lines = link_list.readlines()
-with webdriver.Chrome('C:\\Users\\geri\\Desktop\\drivers\\chromedriver') as driver:
+with webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options) as driver:
     # Open URL
     driver.get("https://www.sofascore.com/football/2021-11-14")
 
